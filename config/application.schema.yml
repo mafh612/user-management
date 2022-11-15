@@ -1,0 +1,34 @@
+- name: PatchUser
+  schema:
+    properties:
+      firstname:
+        type: string
+      lastname:
+        type: string
+      email:
+        type: string
+      role:
+        type: string
+        enum:
+          - guest
+          - user
+          - admin
+- name: User
+  schema:
+    properties:
+      firstname:
+        type: string
+      lastname:
+        type: string
+      email:
+        type: string
+      role:
+        type: string
+        enum:
+          - guest
+          - user
+          - admin
+    required:
+      - firstname
+      - lastname
+      - email
