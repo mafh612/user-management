@@ -1,2 +1,4 @@
 node_modules
 dist
+view/app.js
+view/app.js.LICENSE.txt
