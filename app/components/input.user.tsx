@@ -83,7 +83,14 @@ export const InputUser = ({ event, handleClose, inputUser, open, updateList, aut
         </ListItem>
         {Boolean(event) && (
           <ListItem>
-            <TextField onChange={handleInput} id='password' value={user?.password || ''} label='Password' variant='outlined' />
+            <TextField
+              onChange={handleInput}
+              id='password'
+              type='password'
+              value={user?.password || ''}
+              label='Password'
+              variant='outlined'
+            />
           </ListItem>
         )}
         {Boolean(auth?.role === Role.ADMIN) && (

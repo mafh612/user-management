@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from 'react'
-import { Box, Button, ButtonGroup } from '@mui/material'
+import { Button, Grid, Paper, Typography } from '@mui/material'
 
 import { InputUser } from '../components/input.user'
 import { client } from '../utils/client'
@@ -31,37 +31,67 @@ export const Home = ({ auth }: HomeProps) => {
     setUser(Object.create({}))
     setOpen(true)
   }
-  const pickButtons = () => {
+  const gridItems = () => {
     switch (true) {
       case [Role.USER, Role.ADMIN].includes(auth?.role):
         return (
           <>
-            <Button onClick={logout}>Logout {auth.sub}</Button>
-            <Button onClick={register}>Register</Button>
+            <Grid item>
+              <Paper sx={{ p: 2 }}>
+                <Typography>Logout User</Typography>
+                <Button onClick={logout}>Logout {auth.sub}</Button>
+              </Paper>
+            </Grid>
+            <Grid item>
+              <Paper sx={{ p: 2 }}>
+                <Typography>Register User</Typography>
+                <Button onClick={register}>Register</Button>
+              </Paper>
+            </Grid>
           </>
         )
       case auth?.role === Role.GUEST:
         return (
           <>
-            <Button onClick={logout}>Logout {auth.sub}</Button>
+            <Grid item>
+              <Paper sx={{ p: 2 }}>
+                <Typography>Logout User</Typography>
+                <Button onClick={logout}>Logout {auth.sub}</Button>
+              </Paper>
+            </Grid>
+            <Grid item>
+              <Paper sx={{ p: 2 }}>
+                <Typography>Register User</Typography>
+                <Button onClick={register}>Register</Button>
+              </Paper>
+            </Grid>
           </>
         )
       default:
         return (
           <>
-            <Button onClick={login}>Login</Button>
-            <Button onClick={register}>Register</Button>
+            <Grid item>
+              <Paper sx={{ p: 2 }}>
+                <Typography>Login User</Typography>
+                <Button onClick={login}>Login</Button>
+              </Paper>
+            </Grid>
+            <Grid item>
+              <Paper sx={{ p: 2 }}>
+                <Typography>Register User</Typography>
+                <Button onClick={register}>Register</Button>
+              </Paper>
+            </Grid>
           </>
         )
     }
   }
+
   return (
     <>
-      <Box>
-        <ButtonGroup orientation='vertical' aria-label='vertical contained button group' variant='contained'>
-          {pickButtons()}
-        </ButtonGroup>
-      </Box>
+      <Grid sx={{ flexGrow: 1 }} container direction='row' justifyContent='center' spacing={6}>
+        {gridItems()}
+      </Grid>
       <InputUser inputUser={user as User} event={event} open={open} handleClose={handleClose} />
     </>
   )

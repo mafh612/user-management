@@ -20,7 +20,7 @@ export const theme = createTheme({
 export const Navigation = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Box>
+      <Box marginBottom={2}>
         <Stack direction='row' justifyContent='center' alignItems='center' spacing={2}>
           <Button href='/' variant='contained' startIcon={<HomeIcon />}>
             <Typography>Home</Typography>
