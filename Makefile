@@ -1,5 +1,5 @@
 build-app:
-	yarn && yarn build && NODE_ENV=production yarn webpack
+	yarn --silent && yarn build && NODE_ENV=production yarn webpack
 build-image:
 	docker build . --tag user-management
 
